@@ -20,6 +20,7 @@ $estado = $_POST['estado'];
 $insertar = "INSERT INTO partos(idParto, idRaza, idRazaMacho, numParto ,fechaDesteteAnterior, fechaPrenez, diasAbiertos, fechaParto, nacidosVivosMachos, nacidosMuertosMachos, nacidosVivosHembras, nacidosMuertosHembras, totalnacidos, pesoPromedioCamada,estado) VALUES ('$cod','$idRaza','$idRazaMacho','$numParto','$fechaDesteteAnterior','$fechaPrenez','$diasAbiertos','$fechaParto','$nacidosVivosMachos','$nacidosMuertosMachos','$nacidosVivosHembras','$nacidosMuertosHembras','$totalnacidos','$pesoPromedioCamada','$estado')";
 
 $query = mysql_query($insertar) or die (mysql_error());
+
 header('Location: ../contenido.php');
 
 ?>

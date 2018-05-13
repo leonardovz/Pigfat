@@ -1,9 +1,9 @@
 <?php
 
-include "config.php";
+include "../admin/admin.php";
 include "funciones.php";
 
-$conexion = conexion($db,$user,$pass);
+$conexion = conexion($Database,$Usuario,$Password);
 
 
 $idCerda = $_POST['idCerda'];

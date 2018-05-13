@@ -48,7 +48,8 @@
 
                                 <tr class="">
                                     <?php
-                                        include "config.php";
+                                        include "php/config.php";
+
                                         $sql="SELECT idParto, idRaza, idRazaMacho, numParto, fechaDesteteAnterior, fechaPrenez, diasAbiertos, fechaParto, nacidosVivosMachos, nacidosMuertosMachos, 
                                         nacidosVivosHembras, nacidosMuertosHembras, totalNacidos, pesoPromedioCamada, estado FROM partos";
                                         $query = mysql_query($sql) or die (mysql_error());
@@ -95,7 +96,7 @@
                         </thead>
                         <tr class="">
                                     <?php
-                                        include "config.php";
+                                        include "php/config.php";
                                         $sql="SELECT idCerdo, fechaNacimiento, idRaza, pesoNacimiento, pesoDestete, razaPadre, razaMadre, numHermanosNacidos, numHermanosDestete FROM sementales";
                                         $query = mysql_query($sql) or die (mysql_error());
                                         while($fila = mysql_fetch_array($query)){//despliegue de columnas y filas
@@ -131,8 +132,10 @@
                         </thead>
                         <tr class="">
                                 <?php
-                                    include "config.php";
+                                    include "php/config.php";
+
                                     $sql="SELECT idCerda, fechaNacimiento, idRaza, numPartos, estadoCerda FROM cerdas";
+                                    
                                     $query = mysql_query($sql) or die (mysql_error());
                                     while($fila = mysql_fetch_array($query)){//despliegue de columnas y filas
                                             echo"<tr>";
@@ -160,7 +163,7 @@
                         </thead>
                         <tr class="">
                                 <?php
-                                    include "config.php";
+                                    include "php/config.php";
                                     $sql="SELECT idCorral, numCorral, estadoCorral FROM corrales";
                                     $query = mysql_query($sql) or die (mysql_error());
                                     while($fila = mysql_fetch_array($query)){//despliegue de columnas y filas

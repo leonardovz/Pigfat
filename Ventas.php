@@ -1,13 +1,11 @@
 <?php session_start();
+	
+	require 'admin/admin.php';
+	require 'php/funciones.php';
 
 if (isset($_SESSION['usuario'])) {
-	 try{
-		$conexion = new PDO('mysql:host=localhost;dbname=Paginacion','root','data1122');
-	}
-	catch (PDOException $e){
-		echo "ERROR: " . $e->getMessage();
-		die();
-	}
+		$conexion = conexion($Paginacion,$Usuario, $Password);
+
 	$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1 ;
 	$postPorPagina = 8 ;
 

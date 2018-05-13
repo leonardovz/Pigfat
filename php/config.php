@@ -1,9 +1,9 @@
 <?php
-$pass = 'data1122';
-$user = 'root';
+    require '/admin/admin.php';
+$pass = $Password;
+$user = $Usuario;
 $server = 'localhost';
-$db = 'pfat';
-echo "entro";
+$db = $DataBase;
 
 $conexion = mysql_connect($server,$user,$pass);
 mysql_select_db($db);

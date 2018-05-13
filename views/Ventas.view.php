@@ -59,4 +59,4 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 
-<?php include ('header.view.php');?>
+<?php include ('footer.view.php');?>

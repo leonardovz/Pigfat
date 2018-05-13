@@ -1,5 +1,8 @@
 <?php session_start();
 
+	require 'admin/admin.php';
+	require 'php/funciones.php';
+
 if (isset($_SESSION['usuario'])) {
 	header('Location: index.php');
 }
@@ -14,11 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($usuario) or empty($password) or empty($password2)) {
 		$errores .= '<li>Por favor rellena todos los datos correctamente</li>';
 	} else {
-		try {
-			$conexion = new PDO('mysql:host=localhost;dbname=paginacion', 'root', 'data1122');
-		} catch (PDOException $e) {
-			echo "Error: " . $e->getMessage();
-		}
+		
+		$conexion = conexion($Paginacion,$Usuario,$Password);
 
 		$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1');
 		$statement->execute(array(':usuario' => $usuario));
