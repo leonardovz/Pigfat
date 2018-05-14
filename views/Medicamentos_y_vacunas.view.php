@@ -22,9 +22,7 @@
 									<?php foreach ($articulos as $articulo): ?>
 										<div class="col-xs-12 col-sm-6 col-md-3">
 												<div class="thumbnail">
-													<a href="#">
-														<img src='img/4.jpg' alt="">
-													</a>
+													
 													<div class="caption">
 														<h3><?php echo $articulo['ID'] . " "?>Landrace</h3>
 														<p><?php echo $articulo['Descripcion'] ?></p>

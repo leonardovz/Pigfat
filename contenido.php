@@ -1,11 +1,8 @@
 <?php 
 	session_start();
-
 	require 'admin/admin.php';
 	require 'php/funciones.php';
-
 if (isset($_SESSION['usuario'])) {
-
 	$conexion = conexion($Paginacion,$Usuario,$Password);
 	
 	$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1 ;
@@ -16,12 +13,10 @@ if (isset($_SESSION['usuario'])) {
 	}
 	
 	$inicio =($pagina >1) ? ($pagina * $postPorPagina -$postPorPagina) : 0;
-
-	$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM corrales LIMIT $inicio ,$postPorPagina");
+	$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM paginacion LIMIT $inicio ,$postPorPagina");
 	$articulos->execute();
 	$articulos=$articulos->fetchAll();
 	// print_r($articulos);
-
 	// Para conocer si hay valores
 	if(!$articulos){
 		header('Location: contenido.php');
@@ -31,12 +26,9 @@ if (isset($_SESSION['usuario'])) {
 	$totalArticulos= $totalArticulos->fetch()['total'];
 	// Para mostrar el Total de los articulos
 	// echo $totalArticulos;
-
 	$numeroPagina = ceil($totalArticulos/ $postPorPagina);
-
 	require 'views/contenido.view.php';
 } else {
 	header('Location: login.php');
 }
-
 ?>
