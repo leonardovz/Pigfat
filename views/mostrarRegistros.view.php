@@ -154,25 +154,25 @@
                 </div>
                 <div class="tab-pane fade " id="seccion4">
                     <table class="table table-hover table-condensed">
-                    <thead>
+                        <thead>
                             <tr>
-                                <th>idCorral</th>
-                                <th>numCorral</th>
-                                <th>estadoCorral</th>
+                                <th>ID Corral</th>
+                                <th>Numero de Corral</th>
+                                <th>Estado</th>
+                                <th>Raza</th>
                             </tr>
                         </thead>
                         <tr class="">
                                 <?php
                                     include "php/config.php";
-                                    $sql="SELECT idCorral, numCorral, estadoCorral FROM corrales";
+                                    $sql="SELECT idCorral, numCorral, estadoCorral, idRaza FROM corrales";
                                     $query = mysql_query($sql) or die (mysql_error());
                                     while($fila = mysql_fetch_array($query)){//despliegue de columnas y filas
                                             echo"<tr>";
-                                            echo"<td>$fila[0]</td>";
+                                                echo"<td>$fila[0]</td>";
                                                 echo"<td>$fila[1]</td>";
                                                 echo"<td>$fila[2]</td>";
                                                 echo"<td>$fila[3]</td>";
-                                                echo"<td>$fila[4]</td>";
                                             echo"</tr>";
                                     }
 

@@ -7,7 +7,7 @@
 			<?php if ($pagina==1): ?>
 				<div class="col-xs-12 col-sm-6 col-md-3">
 					<div class="thumbnail">
-						<a href="registros.php"><img class="" src='img/add.png' alt=""></a>
+						<a href="Casetas.php"><img class="" src='img/add.png' alt=""></a>
 						<div class="caption">
 							<h3>Registrar Caseta</h3>
 						</div>
@@ -22,12 +22,13 @@
 								<img src='img/1.jpg' alt="">
 							</a>
 							<div class="caption">
-								<h3>N° Caseta: <small><?php echo $articulo['ID'] . " "?></small></h3>
-								<h3><small>N° puercos:</small></h3>
-								<p><?php echo $articulo['Descripcion'] ?></p>
+								<h3>N° Caseta: <small><?php echo $articulo[1] . " "?></small></h3>
+								<h3><small>Estado de la Caseta:</small></h3>
+								<p><small></small><?php echo $articulo[2] ?></p>
+								<h4>Raza <small><?php echo "   "+ $articulo[3] ?></small></h3>
 								<p>
 									<a href="#" class="btn btn-primary">Agregar</a>
-									<a href="#" class="btn btn-default">Modificar</a>
+									<a href="<?php echo "Mcasetas.php?idCorral=$articulo[0]&numCorral=$articulo[1]&estadoCorral=$articulo[2]&idRaza=$articulo[3]"; ?>" class="btn btn-default">Modificar</a>
 								</p>
 							</div>
 						</div>

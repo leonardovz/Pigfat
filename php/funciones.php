@@ -8,7 +8,6 @@ function conexion($database, $usuario,$pass){
 		echo "ERROR " . $e->getMessage();
 		die();
 		return false;
-
 	}
 }
 
