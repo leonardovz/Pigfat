@@ -27,13 +27,13 @@
 								<p><small></small><?php echo $articulo[2] ?></p>
 								<h4>Raza <small><?php echo "   "+ $articulo[3] ?></small></h3>
 								<p>
-									<a href="#" class="btn btn-primary">Agregar</a>
-									<a href="<?php echo "Mcasetas.php?idCorral=$articulo[0]&numCorral=$articulo[1]&estadoCorral=$articulo[2]&idRaza=$articulo[3]"; ?>" class="btn btn-default">Modificar</a>
+									<a href="php/eliminarCaseta.php?<?php echo "idcorral=$articulo[0]"?>" class="btn btn-danger btn-block btn-lg">Eliminar</a>
+									<a href="<?php echo "Mcasetas.php?idCorral=$articulo[0]&numCorral=$articulo[1]&estadoCorral=$articulo[2]&idRaza=$articulo[3]"; ?>" class="btn btn-primary btn-block btn-lg">Modificar</a>
 								</p>
 							</div>
 						</div>
 				</div>
-			<?php endforeach ?>
+			<?php endforeach; ?>
 		</section>
 	</div>
 		

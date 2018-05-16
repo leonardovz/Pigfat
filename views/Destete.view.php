@@ -98,29 +98,94 @@
 			</div>
 		</div>
 
-        <div class="row">
-			<section class="articulos">
-				<?php foreach ($articulos as $articulo): ?>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-							<div class="thumbnail">
-								<a href="#">
-									<img src='img/4.jpg' alt="">
+        
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Acordeon</h2>
+
+				<div class="panel-group" id="acordeon">
+					<div class="panel panel-default">
+						<div class="panel-heading" id="heading1">
+							<h4 class="panel-title">
+								<a href="#colapsable1" data-toggle="collapse" data-parent="#acordeon">
+									<?php  echo 'Suma de lechones nacidos registrados: '.$row[0].'<br>';?>
 								</a>
-								<div class="caption">
-									<h3><?php echo $articulo['ID'] . " "?>Landrace</h3>
-									<p><?php echo $articulo['Descripcion'] ?></p>
-									<p>
-										<a href="#" class="btn btn-primary">Comprar</a>
-										<a href="#" class="btn btn-default">Detalles</a>
-									</p>
+							</h4>
+						</div>
+
+						<div id="colapsable1" class="panel-collapse collapse in" arial-labelledby="heading1">
+							<div class="panel-body">
+								<div class="row">
+									<section class="articulos">
+										<?php foreach ($articulos as $articulo): ?>
+											<div class="col-xs-12 col-sm-6 col-md-3">
+													<div class="thumbnail">
+														<a href="#">
+															<img src='img/4.jpg' alt="">
+														</a>
+														<div class="caption">
+															<h3><?php echo $articulo['ID'] . " "?>Landrace</h3>
+															<p><?php echo $articulo['Descripcion'] ?></p>
+															<p>
+																<a href="#" class="btn btn-primary">Comprar</a>
+																<a href="#" class="btn btn-default">Detalles</a>
+															</p>
+														</div>
+													</div>
+											</div>
+										<?php endforeach ?>
+									</section>
 								</div>
 							</div>
+						</div>						
 					</div>
-				<?php endforeach ?>
-			</section>
-		</div>
 
-		
+					<div class="panel panel-default">
+						<div class="panel-heading" id="heading2">
+							<h4 class="panel-title">
+								<a href="#colapsable2" data-toggle="collapse" data-parent="#acordeon">
+									Elemento #2
+								</a>
+							</h4>
+						</div>
+
+						<div id="colapsable2" class="panel-collapse collapse" arial-labelledby="heading2">
+							<div class="panel-body">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</div>						
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" id="heading3">
+							<h4 class="panel-title">
+								<a href="#colapsable3" data-toggle="collapse" data-parent="#acordeon">
+									Elemento #3
+								</a>
+							</h4>
+						</div>
+
+						<div id="colapsable3" class="panel-collapse collapse" arial-labelledby="heading3">
+							<div class="panel-body">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
         <section class="container">
 

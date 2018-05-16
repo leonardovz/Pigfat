@@ -9,7 +9,7 @@ $idRaza = $_POST['idRaza'];
 $insertar = "INSERT INTO corrales(numCorral, estadoCorral,idRaza) VALUES ('$numCorral','$estadoCorral','$idRaza')";
 
 $query = mysql_query($insertar) or die (mysql_error());
-header('Location: ../mostrarRegistros.php');
+header('Location: ../contenido.php');
 
 
 ?>

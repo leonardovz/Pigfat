@@ -12,7 +12,8 @@
 <div class="container">
     <div class="row">
         <h1>Registro de Cacetas</h1>
-        <form action="php/Mcaseta.php" method="POST" class="Formulario">
+        <form action="php/updateCaseta.php" method="POST" class="Formulario">
+            <input type="text" name="idCorral" id="idCorral" style= "display:none;" value="<?php echo $idCorral?>">
             <div class="form-group">
                 <label for="numCorral">Modificar Corral de Corral</label>
                 <input class="form-control" type="text" id="numCorral" name="numCorral" placeholder="Numero de Corral" value = "<?php echo $numCorral; ?>">
@@ -24,7 +25,7 @@
                     <option value="ENGORDA" <?php if ($estadoCorral == 'ENGORDA') {echo 'SELECTED'; }?> >ENGORDA</option>
                     <option value="VENTA" <?php if ($estadoCorral == 'VENTA') {echo 'SELECTED'; }?> >VENTA</option>
                     <option value="VACIO" <?php if ($estadoCorral == 'vacio') {echo 'SELECTED'; }?>>VACIO</option>
-                    </select>
+                </select>
             </div>
             <div class="form-group">
                 <label for="idRaza">Raza</label>

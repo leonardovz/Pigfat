@@ -13,7 +13,7 @@ if (isset($_SESSION['usuario'])) {
 	}
 	
 	$inicio =($pagina >1) ? ($pagina * $postPorPagina -$postPorPagina) : 0;
-	$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM paginacion LIMIT $inicio ,$postPorPagina");
+	$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM corrales LIMIT $inicio ,$postPorPagina");
 	$articulos->execute();
 	$articulos=$articulos->fetchAll();
 	// print_r($articulos);

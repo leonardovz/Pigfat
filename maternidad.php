@@ -24,6 +24,7 @@ if (isset($_SESSION['usuario'])) {
 	//Hace una seleccion para realizar un conteo de productos
 	$totalArticulos = $conexion->query('SELECT FOUND_ROWS() as total');
 	$totalArticulos= $totalArticulos->fetch()['total'];
+	
 	// Para mostrar el Total de los articulos
 	// echo $totalArticulos;
 

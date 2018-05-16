@@ -15,10 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// $password = hash('sha512' , $password);
 
 	$conexion = conexion($Paginacion,$Usuario,$Password);
-
-	$statement = $conexion->prepare('
-		SELECT * FROM usuarios WHERE usuario = :usuario AND pass = :password'
-	);
+	$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario AND pass = :password');
 	$statement->execute(array(
 		':usuario' => $usuario,
 		':password' => $password
@@ -27,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$resultado = $statement->fetch();
 	if ($resultado !== false) {
 		$_SESSION['usuario'] = $usuario;
+		// $_SESSION['rango'] = $rango;
 		echo $usuario;
 		header('Location: index.php');
 	} else {

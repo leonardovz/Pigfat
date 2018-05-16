@@ -4,7 +4,14 @@ require 'admin/admin.php';
 require 'php/funciones.php';
 
 if (isset($_SESSION['usuario'])) {
-
+	require 'php/config.php';
+	$sqlSumaNacidos = 'SELECT SUM(totalNAcidos) FROM partos';
+    $querySumaNacidos = mysql_query($sqlSumaNacidos);
+    $totalNacidos;
+    while($row=mysql_fetch_array($querySumaNacidos)){
+        echo 'Suma de lechones nacidos registrados: '.$row[0].'<br>';
+        $totalNacidos=$row[0];
+    }
 	$conexion = conexion($Paginacion,$Usuario,$Password);
 
 	$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1 ;
