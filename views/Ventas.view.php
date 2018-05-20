@@ -37,12 +37,12 @@
 													<td><?php echo $articulo['fechaVenta']?></td>
 													<td><?php echo $articulo['numCerdos']?></td>
 													<td><?php echo $articulo['kgTotales']?>kg</td>
-													<td>$<?php echo $articulo['precioKg']?>.00</td>
+													<td>$ <?php echo $articulo['precioKg']?>.00</td>
 													<td><?php echo $articulo['pesoPromedioCerdo']?>kg</td>
 													<td>$ <?php echo $articulo['totalDinero']?>.00</td>
 													<td>                            
-														<form action="eliminarVenta.php" method="post">
-															<input name="id" type="hidden" value="<?php echo $articulo['idVenta'];?>">
+														<form action="php/eliminarVenta.php" method="post">
+															<input name="id" type="hidden" value="<?php echo $articulo[0];?>">
 															<input class = "btn btn-danger" type="submit" value="Eliminar">
 														</form>
 													</td>
