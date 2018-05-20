@@ -8,7 +8,7 @@ if (isset($_SESSION['usuario'])) {
 	require 'views/Registro_caseta.view.php';
 
 } else {
-	header('Location: login.php');
+	header('Location: index.php');
 }
 
 ?>

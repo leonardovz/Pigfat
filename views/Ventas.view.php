@@ -14,7 +14,7 @@
 							</h4>
 						</div>
 
-						<div id="colapsable1" class="panel-collapse collapse" arial-labelledby="heading1">
+						<div id="colapsable1" class="panel-collapse collapse in" arial-labelledby="heading1">
 							<div class="panel-body">
 								<div class="container-fuild">
 									<div class="row">
@@ -22,7 +22,7 @@
 											<table class="table table-hover table-condensed">
 												<thead>
 													<tr>
-														<th># Corral</th>
+														<th># Venta</th>
 														<th>Fecha de venta</th>
 														<th>Numero de Cerdos</th>
 														<th>Kilos Totales</th>
@@ -41,7 +41,10 @@
 													<td><?php echo $articulo['pesoPromedioCerdo']?>kg</td>
 													<td>$ <?php echo $articulo['totalDinero']?>.00</td>
 													<td>                            
-													<a href="php/eliminarCaseta.php?<?php echo "idcorral=$articulo[0]"?>" class="btn btn-danger btn-block">Eliminar</a>
+														<form action="eliminarVenta.php" method="post">
+															<input name="id" type="hidden" value="<?php echo $articulo['idVenta'];?>">
+															<input class = "btn btn-danger" type="submit" value="Eliminar">
+														</form>
 													</td>
 													<td>
 													<a href="<?php echo "MVentas.php?idVenta=$articulo[0]&fechaVenta=$articulo[1]&numCerdos=$articulo[2]&kgTotales=$articulo[3]&precioKg=$articulo[4]&pesoPromedioCerdo=$articulo[4]&totalDinero= $articulo[5]"; ?>" class="btn btn-primary btn-block">Modificar</a> 
@@ -51,6 +54,35 @@
 											</table>
 										</div>
 									</div>
+									<section class="paginacion">
+										<div class="row">
+											<ul class="pagination pagination-lg">
+											<!-- Establecemos cuando el boton de retroceso estara habilitado -->
+												<?php if ($pagina==1): ?>
+													<li class="disabled"><span>&laquo;</span></li>
+												<?php else: ?>
+													<li><a href="?pagina=<?php echo $pagina - 1?>">&laquo;</a></li>
+												<?php endif;?>
+											<!-- Establecemos un ciclo para mostrar las paginas -->
+												<?php   
+												for ($i=1; $i <= $numeroPagina ; $i++){ 
+													if ($pagina==$i) {
+														echo "<li class='active'><a href='?pagina=$i'>$i <span class='sr-only'>(página actual)</span></a></li>";
+													}else {
+														echo "<li><a href='?pagina=$i'>$i</a></li>"; 
+													}
+												}
+												?>
+												<!-- Establecemos cuando el boton de siguiente estara desabuilitado -->
+												<?php if ($pagina==$numeroPagina): ?>
+												<li class="disabled"><span>&raquo;</span></li>
+												<?php else: ?>
+													<li><a href="?pagina=<?php echo $pagina + 1?>">&raquo;</a></li>
+												<?php endif;?>
+											</ul>
+										</div>
+										
+									</section>
 								</div>
 							</div>
 						</div>
@@ -72,16 +104,8 @@
 										<h1>Registro de Venta</h1>
 										<form action="php/recibeVenta.php" method="POST" class="Formulario">
 											<div class="form-group">
-												<label for="numCorral">id Venta</label>
-												<input class="form-control" type="text" id="idVenta" name="idVenta" placeholder="Inserta un ID de Venta" required>
-											</div>
-											<div class="form-group">
 												<label for="numCorral">Numero de Cerdos</label>
 												<input class="form-control" type="text" id="numCerdos" name="numCerdos" placeholder="Numero de Cerdos a vender" required>
-											</div>
-											<div class="form-group">
-												<label for="fechaVenta">Fecha de Venta</label>
-												<input class="form-control" type="date" name="fechaVenta" id="fechaVenta" required>
 											</div>
 											<div class="form-group">
 												<label for="idRaza">Kilogramos Totales</label>

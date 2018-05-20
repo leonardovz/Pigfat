@@ -38,7 +38,7 @@
 	</div>
 		
 
-	<section class="container">
+	<section class="paginacion">
 		<div class="row">
 			<ul class="pagination pagination-lg">
 			<!-- Establecemos cuando el boton de retroceso estara habilitado -->

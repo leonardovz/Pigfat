@@ -102,14 +102,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Acordeon</h2>
+				<h2>Expresi&oacute;n de informaci&oacute;n</h2>
 
 				<div class="panel-group" id="acordeon">
 					<div class="panel panel-default">
 						<div class="panel-heading" id="heading1">
 							<h4 class="panel-title">
 								<a href="#colapsable1" data-toggle="collapse" data-parent="#acordeon">
-									<?php  echo 'Suma de lechones nacidos registrados: '.$row[0].'<br>';?>
+									<?php  echo 'Datos generales del destete (los valores est&aacute;n redondeados)';?>
 								</a>
 							</h4>
 						</div>
@@ -117,16 +117,64 @@
 						<div id="colapsable1" class="panel-collapse collapse in" arial-labelledby="heading1">
 							<div class="panel-body">
 								<div class="row">
-									<section class="articulos">
-										<?php foreach ($articulos as $articulo): ?>
+									<section class="articulos ">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Descripci&oacute;n</th>
+												<th scope="col">Valor</th>
+								
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Total de lechones nacidos</th>
+												<td><?php  echo $totalNacidos." nacidos";?></td>
+												
+											</tr>
+											<tr>
+												<th scope="row">Promedio de lechones por parto</th>
+												<td><?php echo round(($totalPartos*100)/$totalNacidos,2).' cerdos/parto';?></td>
+												
+											</tr>
+											<tr>
+												<th scope="row">Total de lechones macho nacidos</th>
+												<td><?php echo $totalMachosNacidos+$totalMachosMuertos.' machos';?></td>
+											</tr>
+											<tr>
+												<th scope="row">Porcentaje de lechones macho nacidos por parto</th>
+												<td><?php echo round((($totalMachosNacidos+$totalMachosMuertos)*100)/$totalNacidos,2).' %';?></td>
+											</tr>
+											<tr>
+												<th scope="row">Total de lechones hembra nacidos</th>
+												<td><?php  echo $totalHembrasVivas+$totalHembrasMuertas." hembras";?></td>
+											</tr>
+											<tr>
+												<th scope="row">Porcentaje de lechones hembra nacidas por parto</th>
+												<td><?php echo round(((($totalHembrasVivas+$totalHembrasMuertas)*100)/$totalNacidos),2).' %';?></td>
+											</tr>
+											<th scope="row">Precio promedio al nacer</th>
+												<td><?php echo round($totalPromediosCamada/$totalNacidos,2).' kg';?></td>
+											</tr>
+											<tr>
+												<th scope="row">Total de lechones destetados</th>
+												<td><?php echo $totalCerdosLactancia; ?></td>
+											</tr>
+											<tr>
+												<th scope="row">Peso promedio de los lechones al ser destetados</th>
+												<td><?php echo round($totalPesoCamadaLactancia/$totalCerdosLactancia,2) . 'Kg'; ?></td>
+											</tr>
+										</tbody>
+									</table>	
+										<!-- <?php //foreach ($articulos as $articulo): ?>
 											<div class="col-xs-12 col-sm-6 col-md-3">
 													<div class="thumbnail">
 														<a href="#">
 															<img src='img/4.jpg' alt="">
 														</a>
 														<div class="caption">
-															<h3><?php echo $articulo['ID'] . " "?>Landrace</h3>
-															<p><?php echo $articulo['Descripcion'] ?></p>
+															<h3><?//php echo $articulo['ID'] . " "?>Landrace</h3>
+															<p><?//php echo $articulo['Descripcion'] ?></p>
 															<p>
 																<a href="#" class="btn btn-primary">Comprar</a>
 																<a href="#" class="btn btn-default">Detalles</a>
@@ -134,7 +182,7 @@
 														</div>
 													</div>
 											</div>
-										<?php endforeach ?>
+										<?//php endforeach ?> -->
 									</section>
 								</div>
 							</div>

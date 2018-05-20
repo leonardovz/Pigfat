@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-05-2018 a las 23:36:03
+-- Tiempo de generación: 20-05-2018 a las 20:48:22
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -77,14 +77,7 @@ CREATE TABLE `cerdas` (
 --
 
 INSERT INTO `cerdas` (`idCerda`, `fechaNacimiento`, `idRaza`, `numPartos`, `estadoCerda`) VALUES
-(200001, '2016-03-18', 1200001, 0, 'PRODUCCION'),
-(200002, '2016-03-17', 1200001, 2, 'PRODUCCION'),
-(200003, '2017-03-26', 1200002, 3, 'VENTA'),
-(200004, '2012-12-12', 1200003, 2, 'PRODUCCION'),
-(200005, '2018-04-12', 1200001, 1, ''),
-(200006, '2012-03-02', 1200004, 2, ''),
-(200007, '0000-00-00', 1200001, 0, ''),
-(200008, '0000-00-00', 1200001, 0, '');
+(200001, '2018-05-06', 1200001, 12, 'VENTA');
 
 -- --------------------------------------------------------
 
@@ -95,19 +88,22 @@ INSERT INTO `cerdas` (`idCerda`, `fechaNacimiento`, `idRaza`, `numPartos`, `esta
 CREATE TABLE `corrales` (
   `idCorral` int(11) NOT NULL,
   `numCorral` int(11) NOT NULL,
-  `estadoCorral` enum('ENGORDA','VENTA') NOT NULL,
-  `idRaza` int(11) NOT NULL,
-  `Estado` enum('Activo','Inactivo') NOT NULL
+  `estadoCorral` enum('ENGORDA','VENTA','VACIO') NOT NULL,
+  `idRaza` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `corrales`
 --
 
-INSERT INTO `corrales` (`idCorral`, `numCorral`, `estadoCorral`, `idRaza`, `Estado`) VALUES
-(500001, 1, 'ENGORDA', 0, 'Activo'),
-(500002, 2, 'ENGORDA', 0, 'Activo'),
-(500003, 3, 'VENTA', 0, 'Activo');
+INSERT INTO `corrales` (`idCorral`, `numCorral`, `estadoCorral`, `idRaza`) VALUES
+(1200007, 1200007, 'ENGORDA', 1200001),
+(1200009, 4, 'ENGORDA', 1200000),
+(1200011, 6, 'ENGORDA', 1200000),
+(1200012, 7, 'ENGORDA', 1200000),
+(1200013, 8, 'ENGORDA', 1200000),
+(1200018, 15, 'ENGORDA', 1200000),
+(1200019, 1, 'ENGORDA', 1200001);
 
 -- --------------------------------------------------------
 
@@ -136,8 +132,16 @@ CREATE TABLE `lactancias` (
   `numCerdosLactancia` int(11) NOT NULL,
   `pesoCamadaLactancia` float NOT NULL,
   `fechaProgramadaVacunas` date NOT NULL,
-  `fechaRealVacunas` date NOT NULL
+  `fechaRealVacunas` date NOT NULL,
+  `idParto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `lactancias`
+--
+
+INSERT INTO `lactancias` (`idLactancia`, `numCerdos21Dias`, `pesoCamada21Dias`, `diasLactancia`, `numCerdosLactancia`, `pesoCamadaLactancia`, `fechaProgramadaVacunas`, `fechaRealVacunas`, `idParto`) VALUES
+(500001, 9, 55, 40, 9, 90, '2018-09-15', '2018-09-15', 1300001);
 
 -- --------------------------------------------------------
 
@@ -201,6 +205,7 @@ INSERT INTO `paginacion` (`ID`, `Descripcion`) VALUES
 
 CREATE TABLE `partos` (
   `idParto` int(11) NOT NULL,
+  `idApareamiento` int(11) NOT NULL,
   `idRaza` int(11) NOT NULL,
   `idRazaMacho` int(11) NOT NULL,
   `numParto` int(11) NOT NULL,
@@ -214,27 +219,43 @@ CREATE TABLE `partos` (
   `nacidosMuertosHembras` int(11) NOT NULL,
   `totalNacidos` int(11) NOT NULL,
   `pesoPromedioCamada` float NOT NULL,
-  `estado` enum('CASETA','VENTA') NOT NULL
+  `estado` enum('CASETA','VENTA') NOT NULL,
+  `pesoCamada` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `partos`
 --
 
-INSERT INTO `partos` (`idParto`, `idRaza`, `idRazaMacho`, `numParto`, `fechaDesteteAnterior`, `fechaPrenez`, `diasAbiertos`, `fechaParto`, `nacidosVivosMachos`, `nacidosMuertosMachos`, `nacidosVivosHembras`, `nacidosMuertosHembras`, `totalNacidos`, `pesoPromedioCamada`, `estado`) VALUES
-(1300001, 1200003, 1200001, 1, '0000-00-00', '2017-12-19', 0, '2018-04-18', 8, 0, 1, 0, 9, 3.1, 'CASETA'),
-(1300002, 1200004, 1200002, 2, '2017-09-29', '2018-01-05', 6, '2018-04-18', 4, 1, 5, 0, 10, 3.5, 'CASETA'),
-(1300003, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 1, 0, 0, 0, 10, 8, ''),
-(1300004, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 1, 0, 0, 0, 10, 8, ''),
-(1300005, 0, 1200001, 0, '0000-00-00', '0000-00-00', 0, '0000-00-00', 0, 0, 0, 0, 0, 0, 'VENTA'),
-(1300006, 0, 1200001, 4, '2018-04-04', '2018-04-03', 5, '2018-04-19', 3, 0, 7, 45, 4, 785463, 'VENTA'),
-(1300007, 0, 1200005, 0, '2018-04-21', '2018-04-13', 89, '2018-05-03', 9, 0, 9, 9, 9, -12, ''),
-(1300008, 0, 1200001, -1222, '2018-04-20', '0000-00-00', -12, '2018-04-19', -12, 0, -12, -12, -12, -12, 'VENTA'),
-(1300009, 0, 1200001, 412, '2018-04-30', '2018-04-09', 2, '2018-04-03', 3, 0, 8, 5, 8, 0, 'VENTA'),
-(1300010, 0, 1200001, 0, '0000-00-00', '0000-00-00', 0, '0000-00-00', 0, 0, 0, 0, 0, 0, 'VENTA'),
-(1300011, 0, 1200001, 0, '0000-00-00', '0000-00-00', 0, '0000-00-00', 0, 0, 0, 0, 0, 0, 'VENTA'),
-(1300012, 0, 0, 0, '0000-00-00', '0000-00-00', 0, '0000-00-00', 0, 0, 0, 0, 0, 0, ''),
-(1300013, 0, 1200001, 0, '0000-00-00', '0000-00-00', 0, '0000-00-00', 0, 0, 0, 0, 0, 0, 'VENTA');
+INSERT INTO `partos` (`idParto`, `idApareamiento`, `idRaza`, `idRazaMacho`, `numParto`, `fechaDesteteAnterior`, `fechaPrenez`, `diasAbiertos`, `fechaParto`, `nacidosVivosMachos`, `nacidosMuertosMachos`, `nacidosVivosHembras`, `nacidosMuertosHembras`, `totalNacidos`, `pesoPromedioCamada`, `estado`, `pesoCamada`) VALUES
+(1300001, 0, 1200003, 1200001, 1, '0000-00-00', '2017-12-19', 0, '2018-04-18', 8, 0, 1, 0, 9, 3.1, 'CASETA', 27.9),
+(1300002, 0, 1200004, 1200002, 2, '2017-09-29', '2018-01-05', 6, '2018-04-18', 4, 1, 5, 0, 10, 3.5, 'CASETA', 35),
+(1300003, 0, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 1, 0, 9, 0, 10, 3.9, '', 39),
+(1300004, 0, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 4, 0, 6, 0, 10, 4.2, '', 42),
+(1300006, 0, 0, 1200001, 4, '2018-04-04', '2018-04-03', 5, '2018-04-19', 3, 0, 7, 0, 10, 4.6, 'VENTA', 46),
+(1300009, 0, 0, 1200001, 412, '2018-04-30', '2018-04-09', 2, '2018-04-03', 3, 0, 8, 5, 16, 3.8, 'VENTA', 60.8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `raza`
+--
+
+CREATE TABLE `raza` (
+  `idRaza` int(11) NOT NULL,
+  `Nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `raza`
+--
+
+INSERT INTO `raza` (`idRaza`, `Nombre`) VALUES
+(1200000, 'Vacio'),
+(1200001, 'Ladrace'),
+(1200002, 'Mocre'),
+(1200003, 'Perejil'),
+(1200004, 'Porki');
 
 -- --------------------------------------------------------
 
@@ -311,9 +332,27 @@ CREATE TABLE `ventas` (
   `numCerdos` int(11) NOT NULL,
   `kgTotales` int(11) NOT NULL,
   `precioKg` float NOT NULL,
-  `precioPromedioCerdo` float NOT NULL,
+  `pesoPromedioCerdo` float NOT NULL,
   `totalDinero` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`idVenta`, `fechaVenta`, `numCerdos`, `kgTotales`, `precioKg`, `pesoPromedioCerdo`, `totalDinero`) VALUES
+(1, '2018-05-16', 15, 600, 32, 40, 19200),
+(2, '2018-05-16', 14, 600, 15, 42, 900),
+(3, '0000-00-00', 3, 15, 15, 5, 225),
+(5, '0000-00-00', 50, 5000, 32, 100, 160000),
+(123, '0000-00-00', 123, 400, 123, 3.25, 49200),
+(124, '2018-05-02', 123, 123, 123, 1, 15129),
+(125, '0000-00-00', 12, 400, 12, 33.33, 4800),
+(126, '0000-00-00', 123, 400, 123, 3.25, 49200),
+(127, '2018-05-20', 123, 400, 123, 3.25, 49200),
+(128, '2018-05-20', 13, 300, 1500, 23.08, 450000),
+(129, '2018-05-20', 123, 400, 123, 3.25, 49200),
+(130, '2018-05-20', 123, 400, 45, 3.25, 18000);
 
 --
 -- Índices para tablas volcadas
@@ -345,7 +384,8 @@ ALTER TABLE `cerdas`
 --
 ALTER TABLE `corrales`
   ADD PRIMARY KEY (`idCorral`),
-  ADD UNIQUE KEY `idCorral_UNIQUE` (`idCorral`);
+  ADD UNIQUE KEY `idCorral_UNIQUE` (`idCorral`),
+  ADD UNIQUE KEY `numCorral` (`numCorral`);
 
 --
 -- Indices de la tabla `engordas`
@@ -359,7 +399,8 @@ ALTER TABLE `engordas`
 --
 ALTER TABLE `lactancias`
   ADD PRIMARY KEY (`idLactancia`),
-  ADD UNIQUE KEY `idLactancia_UNIQUE` (`idLactancia`);
+  ADD UNIQUE KEY `idLactancia_UNIQUE` (`idLactancia`),
+  ADD KEY `lactancia_partos_idx` (`idParto`);
 
 --
 -- Indices de la tabla `medicamentos`
@@ -379,7 +420,14 @@ ALTER TABLE `paginacion`
 --
 ALTER TABLE `partos`
   ADD PRIMARY KEY (`idParto`),
-  ADD UNIQUE KEY `idParto_UNIQUE` (`idParto`);
+  ADD UNIQUE KEY `idParto_UNIQUE` (`idParto`),
+  ADD KEY `parto_apareamiento_idx` (`idApareamiento`);
+
+--
+-- Indices de la tabla `raza`
+--
+ALTER TABLE `raza`
+  ADD PRIMARY KEY (`idRaza`);
 
 --
 -- Indices de la tabla `sementales`
@@ -428,12 +476,12 @@ ALTER TABLE `apareamientos`
 -- AUTO_INCREMENT de la tabla `cerdas`
 --
 ALTER TABLE `cerdas`
-  MODIFY `idCerda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200009;
+  MODIFY `idCerda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200002;
 --
 -- AUTO_INCREMENT de la tabla `corrales`
 --
 ALTER TABLE `corrales`
-  MODIFY `idCorral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500004;
+  MODIFY `idCorral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1200020;
 --
 -- AUTO_INCREMENT de la tabla `engordas`
 --
@@ -443,7 +491,7 @@ ALTER TABLE `engordas`
 -- AUTO_INCREMENT de la tabla `lactancias`
 --
 ALTER TABLE `lactancias`
-  MODIFY `idLactancia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLactancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500002;
 --
 -- AUTO_INCREMENT de la tabla `medicamentos`
 --
@@ -459,6 +507,11 @@ ALTER TABLE `paginacion`
 --
 ALTER TABLE `partos`
   MODIFY `idParto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1300014;
+--
+-- AUTO_INCREMENT de la tabla `raza`
+--
+ALTER TABLE `raza`
+  MODIFY `idRaza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1200005;
 --
 -- AUTO_INCREMENT de la tabla `sementales`
 --
@@ -478,7 +531,17 @@ ALTER TABLE `vacunas`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `lactancias`
+--
+ALTER TABLE `lactancias`
+  ADD CONSTRAINT `lactancia_partos` FOREIGN KEY (`idParto`) REFERENCES `partos` (`idParto`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
