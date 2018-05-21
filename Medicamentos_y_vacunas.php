@@ -8,15 +8,17 @@ if (isset($_SESSION['usuario'])) {
 	$conexion = conexion($Paginacion,$Usuario,$Password);
 	
 	$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1 ;
-	$postPorPagina = 8 ;
+	$postPorPagina = 12 ;
 
 	$inicio =($pagina >1) ? ($pagina * $postPorPagina -$postPorPagina) : 0;
 
-	$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM paginacion LIMIT $inicio ,$postPorPagina");
+	$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM vacunas LIMIT $inicio ,$postPorPagina");
 	$articulos->execute();
 	$articulos=$articulos->fetchAll();
 	// print_r($articulos);
-
+	$Medicamentos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM Medicamentos LIMIT $inicio ,$postPorPagina");
+	$Medicamentos->execute();
+	$Medicamentos=$Medicamentos->fetchAll();
 	// Para conocer si hay valores
 	if(!$articulos){
 		header('Location: contenido.php');

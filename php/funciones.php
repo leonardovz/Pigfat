@@ -11,10 +11,4 @@ function conexion($database, $usuario,$pass){
 	}
 }
 
-function Venta($id, $conexion){
-
-}
-
-
-
 ?>
