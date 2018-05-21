@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-05-2018 a las 20:48:22
+-- Tiempo de generación: 21-05-2018 a las 13:56:22
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -157,6 +157,14 @@ CREATE TABLE `medicamentos` (
   `cantidad` int(11) NOT NULL,
   `viaSuministro` enum('ALIMENTO','INYECCION','ORAL','CUTANEA') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `medicamentos`
+--
+
+INSERT INTO `medicamentos` (`idMedicamento`, `principioActivo`, `nombreMedicamento`, `laboratorioProcedencia`, `cantidad`, `viaSuministro`) VALUES
+(1, 'Paracetamol', '', '', 0, ''),
+(2, 'Arroz', 'Aroz con leche', 'doctor simo', 32, 'INYECCION');
 
 -- --------------------------------------------------------
 
@@ -320,6 +328,14 @@ CREATE TABLE `vacunas` (
   `observaciones` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `vacunas`
+--
+
+INSERT INTO `vacunas` (`idVacuna`, `principioActivo`, `enfermedadPreventiva`, `cantidadVacunas`, `observaciones`) VALUES
+(1, 'Paracetamol', 'Erpes', 15, 'El animalito se siente mal'),
+(2, 'Penicilina', 'Hongos en las patas ya trae mas', 2, 'Si lo se las das se va a morir');
+
 -- --------------------------------------------------------
 
 --
@@ -341,16 +357,10 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`idVenta`, `fechaVenta`, `numCerdos`, `kgTotales`, `precioKg`, `pesoPromedioCerdo`, `totalDinero`) VALUES
-(1, '2018-05-16', 15, 600, 32, 40, 19200),
 (2, '2018-05-16', 14, 600, 15, 42, 900),
-(3, '0000-00-00', 3, 15, 15, 5, 225),
-(5, '0000-00-00', 50, 5000, 32, 100, 160000),
-(123, '0000-00-00', 123, 400, 123, 3.25, 49200),
 (124, '2018-05-02', 123, 123, 123, 1, 15129),
-(125, '0000-00-00', 12, 400, 12, 33.33, 4800),
-(126, '0000-00-00', 123, 400, 123, 3.25, 49200),
-(127, '2018-05-20', 123, 400, 123, 3.25, 49200),
-(128, '2018-05-20', 13, 300, 1500, 23.08, 450000),
+(127, '2018-05-23', 123, 400, 123, 3.25, 49200),
+(128, '2018-05-14', 13, 400, 1500, 30.77, 600000),
 (129, '2018-05-20', 123, 400, 123, 3.25, 49200),
 (130, '2018-05-20', 123, 400, 45, 3.25, 18000);
 
@@ -496,7 +506,7 @@ ALTER TABLE `lactancias`
 -- AUTO_INCREMENT de la tabla `medicamentos`
 --
 ALTER TABLE `medicamentos`
-  MODIFY `idMedicamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMedicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `paginacion`
 --
@@ -526,7 +536,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vacunas`
 --
 ALTER TABLE `vacunas`
-  MODIFY `idVacuna` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVacuna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
