@@ -12,5 +12,5 @@ $insertar = "INSERT INTO `medicamentos`(`principioActivo`, `nombreMedicamento`, 
 // echo $insertar;
 $query = mysql_query($insertar) or die (mysql_error());
 
-header('Location: ../Medicamentos_y_vacunas.php');
+header('Location: ../Medicamentos_y_vacunas.php?id=2');
 ?>

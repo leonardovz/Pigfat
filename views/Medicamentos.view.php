@@ -110,11 +110,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="laboratorioProcedencia">Laboratorio De Procedencia</label>
-                                                <input class="form-control" type="text" name="laboratorioProcedencia" id="laboratorioProcedencia" required>
+                                                <input class="form-control" type="text" name="laboratorioProcedencia" id="laboratorioProcedencia" placeholder = "Ingresa el Nombre de quie Elabora el medicamento "required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cantidad">Cantidad</label>
-                                                <input class="form-control" type="text" name="cantidad" id="cantidad" required>
+                                                <input class="form-control" type="text" name="cantidad" id="cantidad" placeholder = "Ingresa el numero de Medicamentos que tienes" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="viaSuministro">Via de Suministro</label>
@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
 							</div>
-						</div>						
+						</div>
 					</div>
 
 					<div class="panel panel-default">

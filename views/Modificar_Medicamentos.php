@@ -8,7 +8,6 @@
     $sentencia = $conexion->prepare("SELECT * FROM Medicamentos WHERE idMedicamento = $id");
     $sentencia->execute();
     $Variables = $sentencia->fetchAll();
-    echo $Variables[0][0] . ' '. $Variables[0][1];
     
     $principioActivo = $Variables[0][1] ;
     $nombreMedicamento = $Variables[0][2] ;
@@ -19,7 +18,6 @@
 <div class="container">
     <div class="row">
         <h1>Modificar Medicamentos</h1>
-        <?php echo $id; echo 'sadasdasd' .$fila?>
         <form action="php/updateMedicamento.php" method="POST" class="Formulario">
             <input name="id" type="hidden" value="<?php echo $id;?>">
             <div class="form-group">

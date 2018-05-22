@@ -32,7 +32,7 @@ if (isset($_SESSION['usuario'])) {
     //Total de lechones hembra nacidos vivas
     $sqlSumaHembrasVivas = 'SELECT SUM(nacidosVivosHembras) FROM partos';
     $querySumaHembrasVivas = mysql_query($sqlSumaHembrasVivas);
-    $totalHembrasVivas;
+    $totalHembrasVivas; 
     while($row=mysql_fetch_array($querySumaHembrasVivas)){
         $totalHembrasVivas=$row[0];
     }

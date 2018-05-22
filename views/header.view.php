@@ -94,9 +94,9 @@
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicamentos y vacunas <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="Medicamentos_y_vacunas.php">Enfermos en etapa de crecimiento</a></li>
-								<li><a href="#">Ingresar vacunas</a></li>
-								<li><a href="#">Ingresar medicamentos</a></li>
+								<!-- <li><a href="Medicamentos_y_vacunas.php">Enfermos en etapa de crecimiento</a></li> -->
+								<li><a href="Medicamentos_y_vacunas.php?id=1">Vacunas</a></li>
+								<li><a href="Medicamentos_y_vacunas.php?id=2">Medicamentos</a></li>
 							</ul>
 						</li>
 						<li>

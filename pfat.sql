@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-05-2018 a las 13:56:22
+-- Tiempo de generación: 22-05-2018 a las 00:00:25
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -141,7 +141,8 @@ CREATE TABLE `lactancias` (
 --
 
 INSERT INTO `lactancias` (`idLactancia`, `numCerdos21Dias`, `pesoCamada21Dias`, `diasLactancia`, `numCerdosLactancia`, `pesoCamadaLactancia`, `fechaProgramadaVacunas`, `fechaRealVacunas`, `idParto`) VALUES
-(500001, 9, 55, 40, 9, 90, '2018-09-15', '2018-09-15', 1300001);
+(500001, 9, 55, 40, 9, 90, '2018-09-15', '2018-09-15', 1300001),
+(500002, 0, 0, 40, 9, 100, '0000-00-00', '0000-00-00', 1300002);
 
 -- --------------------------------------------------------
 
@@ -227,7 +228,7 @@ CREATE TABLE `partos` (
   `nacidosMuertosHembras` int(11) NOT NULL,
   `totalNacidos` int(11) NOT NULL,
   `pesoPromedioCamada` float NOT NULL,
-  `estado` enum('CASETA','VENTA') NOT NULL,
+  `estado` enum('destete','engorda','enfermo','venta') NOT NULL,
   `pesoCamada` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -236,12 +237,13 @@ CREATE TABLE `partos` (
 --
 
 INSERT INTO `partos` (`idParto`, `idApareamiento`, `idRaza`, `idRazaMacho`, `numParto`, `fechaDesteteAnterior`, `fechaPrenez`, `diasAbiertos`, `fechaParto`, `nacidosVivosMachos`, `nacidosMuertosMachos`, `nacidosVivosHembras`, `nacidosMuertosHembras`, `totalNacidos`, `pesoPromedioCamada`, `estado`, `pesoCamada`) VALUES
-(1300001, 0, 1200003, 1200001, 1, '0000-00-00', '2017-12-19', 0, '2018-04-18', 8, 0, 1, 0, 9, 3.1, 'CASETA', 27.9),
-(1300002, 0, 1200004, 1200002, 2, '2017-09-29', '2018-01-05', 6, '2018-04-18', 4, 1, 5, 0, 10, 3.5, 'CASETA', 35),
-(1300003, 0, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 1, 0, 9, 0, 10, 3.9, '', 39),
-(1300004, 0, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 4, 0, 6, 0, 10, 4.2, '', 42),
-(1300006, 0, 0, 1200001, 4, '2018-04-04', '2018-04-03', 5, '2018-04-19', 3, 0, 7, 0, 10, 4.6, 'VENTA', 46),
-(1300009, 0, 0, 1200001, 412, '2018-04-30', '2018-04-09', 2, '2018-04-03', 3, 0, 8, 5, 16, 3.8, 'VENTA', 60.8);
+(1300001, 0, 1200003, 1200001, 1, '0000-00-00', '2017-12-19', 0, '2018-04-18', 8, 0, 1, 0, 9, 3.1, 'engorda', 27.9),
+(1300002, 0, 1200004, 1200002, 2, '2017-09-29', '2018-01-05', 6, '2018-04-18', 4, 1, 5, 0, 10, 3.5, 'engorda', 35),
+(1300003, 0, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 1, 0, 9, 0, 10, 3.9, 'destete', 39),
+(1300004, 0, 0, 1200001, 4, '2018-04-12', '2018-04-27', 123, '2018-04-20', 4, 0, 6, 0, 10, 4.2, 'destete', 42),
+(1300006, 0, 0, 1200001, 4, '2018-04-04', '2018-04-03', 5, '2018-04-19', 3, 0, 7, 0, 10, 4.6, 'destete', 46),
+(1300009, 0, 0, 1200001, 412, '2018-04-30', '2018-04-09', 2, '2018-04-03', 3, 0, 8, 5, 16, 3.8, 'destete', 60.8),
+(1300014, 0, 0, 1200001, 5, '2017-12-05', '2017-12-09', 40, '2018-05-21', 5, 1, 6, 0, 12, 48, 'destete', 0);
 
 -- --------------------------------------------------------
 
@@ -301,18 +303,19 @@ INSERT INTO `sementales` (`idCerdo`, `fechaNacimiento`, `idRaza`, `pesoNacimient
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(30) NOT NULL,
-  `pass` varchar(30) NOT NULL
+  `pass` varchar(30) NOT NULL,
+  `tipoUser` enum('Admin','Casetero','Veterinario','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `pass`) VALUES
-(1, 'leonardo', '1234567890'),
-(16, 'cesar', 'cesar123'),
-(17, '207448228', 'rafarafa'),
-(19, 'leonardo13', 'leonardo13');
+INSERT INTO `usuarios` (`id`, `usuario`, `pass`, `tipoUser`) VALUES
+(1, 'leonardo', '1234567890', 'Admin'),
+(16, 'cesar', 'cesar123', 'Admin'),
+(17, '207448228', 'rafarafa', 'Admin'),
+(19, 'leonardo13', 'leonardo13', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -501,7 +504,7 @@ ALTER TABLE `engordas`
 -- AUTO_INCREMENT de la tabla `lactancias`
 --
 ALTER TABLE `lactancias`
-  MODIFY `idLactancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500002;
+  MODIFY `idLactancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500003;
 --
 -- AUTO_INCREMENT de la tabla `medicamentos`
 --
@@ -516,7 +519,7 @@ ALTER TABLE `paginacion`
 -- AUTO_INCREMENT de la tabla `partos`
 --
 ALTER TABLE `partos`
-  MODIFY `idParto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1300014;
+  MODIFY `idParto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1300015;
 --
 -- AUTO_INCREMENT de la tabla `raza`
 --

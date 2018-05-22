@@ -3,14 +3,12 @@
 	require '../php/funciones.php';
 if (isset($_SESSION['usuario'])) {
     $idBorrar= $_POST['id'];
-    echo $idBorrar;
-    echo $Tablaname;
-    echo $idBorrar;
+    echo $id;
     try {
-        $borrar = "DELETE FROM  Medicamentos WHERE idMedicamento = '$idBorrar';";
+        $borrar = "DELETE FROM  usuarios WHERE id = '$id';";
         echo $borrar;
         $query = mysql_query($borrar) or die (mysql_error());
-        header('Location: ../Medicamentos_y_vacunas.php');
+        header('Location: ../Perfil.php');
     } catch (PDOException $e) {
         echo $Tablaname;
         echo "ERROR " . $e->getMessage();
@@ -18,5 +16,5 @@ if (isset($_SESSION['usuario'])) {
     }
 
 } else {
-	header('Location: ../Medicamentos_y_vacunas.php?id=2');
+	header('Location: ../Perfil.php');
 }

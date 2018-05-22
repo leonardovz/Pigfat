@@ -13,5 +13,5 @@ $insertar = "UPDATE `medicamentos` SET `principioActivo`='$principioActivo',`nom
 echo $insertar;
 $query = mysql_query($insertar) or die (mysql_error());
 
-header('Location: ../Medicamentos_y_vacunas.php');
+header('Location: ../Medicamentos_y_vacunas.php?id=2');
 ?>
