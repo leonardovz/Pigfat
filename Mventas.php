@@ -3,7 +3,7 @@
 	require 'admin/admin.php';
 	require 'php/funciones.php';
 
-if (isset($_SESSION['usuario'])) {
+if (($_SESSION['type']=='Admin')) {
 
 	require 'views/Modificar_venta.php';
 

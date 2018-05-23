@@ -82,16 +82,6 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="Ventas.php">Cerdos</a></li>
-								<li><a href="#">Dias desde el nacimiento a la venta</a></li>
-								<li><a href="#">Peso promedio de los cerdos por venta</a></li>
-								<li><a href="#">Total de cerdos vendidos</a></li>
-								<li><a href="#">Promedio de cerdos que salen a la venta por camada</a></li>
-							</ul>
-						</li>
-						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicamentos y vacunas <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<!-- <li><a href="Medicamentos_y_vacunas.php">Enfermos en etapa de crecimiento</a></li> -->
@@ -109,15 +99,6 @@
 								<li><a href="#">Muertes en desarollo y engorda</a></li>
 								<li><a href="#">Muertes de hembras en lactancia</a></li>
 								<li><a href="#">Muertes de hembras en gestaci&oacute;n</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registros <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="registros.php">Ingresar Registro</a></li>
-								<li><a href="mostrarRegistros.php">Ver Registros</a></li>
-								<!-- <li><a href="#">Primeras tres semanas</a></li>
-								<li><a href="#">Nacidos muertos</a></li> -->
 							</ul>
 						</li>
 						<li>
@@ -143,8 +124,20 @@
 
 					<!-- Formulario de Busqueda -->
 					<form class="navbar-form navbar-right" action="" role="search">
-						<div class="form-group">
-							<div class="btn btn-default"><a href="cerrar.php">Cerrar Sesión</a></div>
+						<div class="dropdown">
+							<button type="button" class="btn label-default dropdown-toggle" id="dropdown1" data-toggle="dropdown">
+								<span class = "glyphicon glyphicon-collapse-down"></span> <span class="caret"></span>
+							</button>
+
+							<ul class="dropdown-menu" aria-lebelledby="dropdown1">
+								<?php session_start(); if($_SESSION['type']=='Admin'):?>
+								<li class="dropdown-header">Usuario</li>
+								<li><a href="perfil.php">Perfil</a></li>
+								<li class="divider"></li>
+								<?php endif;?>
+								<li class="dropdown-header">Sesion</li>
+								<li><a href="cerrar.php">Cerrar Sesión</a></li>
+							</ul>
 						</div>
 					</form>
 				</div>

@@ -20,12 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		':usuario' => $usuario,
 		':password' => $password
 	));
-
+	$RECARGADO = obtener_nombre($usuario, $conexion);
 	$resultado = $statement->fetch();
 	if ($resultado !== false) {
-		$_SESSION['usuario'] = $usuario;
-		// $_SESSION['rango'] = $rango;
-		echo $usuario;
+		$_SESSION['usuario'] = $RECARGADO[1];
+		$_SESSION['type'] = $RECARGADO[3];
 		header('Location: index.php');
 	} else {
 		$errores .= '<li>Datos Incorrectos</li>';

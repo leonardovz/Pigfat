@@ -1,7 +1,7 @@
 <?php include ('header.view.php');?>
 
 <div class="container">
-	<h1>Casetas</h1>
+	<h1>Casetas </h1>
 	<div class="row">
 		<section class="articulos">
 			<?php if ($pagina==1): ?>
