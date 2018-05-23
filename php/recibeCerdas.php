@@ -1,17 +1,28 @@
 <?php
 
 include "config.php";
-
-$idCerda = $_POST['idCerda'];
-$fechaNacimiento = $_POST['fechaNacimiento'];
+date_default_timezone_set('America/Mexico_city');
+$idCamada = $_POST['idCamada'];
 $idRaza = $_POST['idRaza'];
-$numPartos = $_POST['numPartos'];
-$estadoCerda = $_POST['estadoCerda'];
+$fechaNacimiento = date('Y-m-d');
 
-$insertar = "INSERT INTO cerdas(idCerda, fechaNacimiento, idRaza,numPartos,estadoCerda) VALUES ('$idCerda','$fechaNacimiento','$idRaza','$numPartos','$estadoCerda')";
+if($idCamada == 200000){
+    $insertar = "INSERT INTO cerdas(idCerda, fechaNacimiento, idRaza, numPartos, estadoCerda, idParto) VALUES('','$fechaNacimiento','$idRaza','0','produccion','$idCamada')";
+    $query = mysql_query($insertar) or die (mysql_error());
+    
+}else{
+    $sqlDatos = "SELECT fechaParto, numParto FROM partos WHERE idParto='$idCamada'";
+    $queryDatos = mysql_query($sqlDatos) or die (mysql_error());
+    $fila = mysql_fetch_array($queryDatos);
+    $numParto = $fila[1];
+    $fechaNacimiento = $fila[0];
+    $insertar = "INSERT INTO cerdas(idCerda, fechaNacimiento, idRaza, numPartos, estadoCerda, idParto) VALUES ('','$fechaNacimiento','$idRaza','$numParto','produccion','$idCamada')";
+    $query = mysql_query($insertar) or die (mysql_error());
+}
 
-$query = mysql_query($insertar) or die (mysql_error());
 
 
-header('Location: ../contenido.php');
+
+
+header('Location: ../registros.php#seccion2');
 ?>

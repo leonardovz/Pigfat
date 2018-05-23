@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-05-2018 a las 00:00:25
+-- Tiempo de generación: 23-05-2018 a las 22:39:57
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -50,13 +50,24 @@ INSERT INTO `alimentos` (`idAlimento`, `nombre`, `tipoAlimento`, `cantidadAlimen
 
 CREATE TABLE `apareamientos` (
   `idApareamiento` int(11) NOT NULL,
-  `idRazaHembra` int(11) NOT NULL,
-  `idRazaMacho` int(11) NOT NULL,
+  `idHembra` int(11) NOT NULL,
+  `idMacho` int(11) NOT NULL,
   `montaUno` date NOT NULL,
-  `montados` date NOT NULL,
+  `montaDos` date NOT NULL,
   `fechaAproximadaNacimiento` date NOT NULL,
-  `fechaRealNacimiento` date NOT NULL
+  `fechaRealNacimiento` date NOT NULL,
+  `estadoApareamiento` enum('curso','terminado','interrumpido','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `apareamientos`
+--
+
+INSERT INTO `apareamientos` (`idApareamiento`, `idHembra`, `idMacho`, `montaUno`, `montaDos`, `fechaAproximadaNacimiento`, `fechaRealNacimiento`, `estadoApareamiento`) VALUES
+(1, 200001, 300002, '2018-05-16', '2018-05-23', '2018-08-23', '0000-00-00', 'curso'),
+(2, 200008, 300001, '2018-05-16', '2018-05-23', '2018-08-23', '0000-00-00', 'terminado'),
+(3, 200010, 300003, '2018-05-16', '2018-05-23', '2018-08-25', '0000-00-00', 'curso'),
+(4, 200010, 300002, '2018-05-18', '2018-05-25', '2018-09-01', '0000-00-00', 'curso');
 
 -- --------------------------------------------------------
 
@@ -69,15 +80,19 @@ CREATE TABLE `cerdas` (
   `fechaNacimiento` date NOT NULL,
   `idRaza` int(11) NOT NULL,
   `numPartos` int(11) NOT NULL,
-  `estadoCerda` enum('PRODUCCION','VENTA') NOT NULL
+  `estadoCerda` enum('produccion','venta','desecho','muerta','enferma','prenez') NOT NULL,
+  `idPArto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cerdas`
 --
 
-INSERT INTO `cerdas` (`idCerda`, `fechaNacimiento`, `idRaza`, `numPartos`, `estadoCerda`) VALUES
-(200001, '2018-05-06', 1200001, 12, 'VENTA');
+INSERT INTO `cerdas` (`idCerda`, `fechaNacimiento`, `idRaza`, `numPartos`, `estadoCerda`, `idPArto`) VALUES
+(200001, '2018-05-05', 1200001, 1, 'venta', 1300001),
+(200008, '2018-05-22', 1200001, 0, 'produccion', 200000),
+(200009, '2018-05-22', 1200001, 0, 'produccion', 200000),
+(200010, '2018-04-20', 1200001, 4, 'prenez', 1300003);
 
 -- --------------------------------------------------------
 
@@ -142,7 +157,7 @@ CREATE TABLE `lactancias` (
 
 INSERT INTO `lactancias` (`idLactancia`, `numCerdos21Dias`, `pesoCamada21Dias`, `diasLactancia`, `numCerdosLactancia`, `pesoCamadaLactancia`, `fechaProgramadaVacunas`, `fechaRealVacunas`, `idParto`) VALUES
 (500001, 9, 55, 40, 9, 90, '2018-09-15', '2018-09-15', 1300001),
-(500002, 0, 0, 40, 9, 100, '0000-00-00', '0000-00-00', 1300002);
+(500002, 0, 0, 40, 10, 100, '0000-00-00', '0000-00-00', 1300002);
 
 -- --------------------------------------------------------
 
@@ -164,7 +179,7 @@ CREATE TABLE `medicamentos` (
 --
 
 INSERT INTO `medicamentos` (`idMedicamento`, `principioActivo`, `nombreMedicamento`, `laboratorioProcedencia`, `cantidad`, `viaSuministro`) VALUES
-(1, 'Paracetamol', '', '', 0, ''),
+(1, 'Paracetamol', 'Paracetamol', 'Caquita', 0, 'ALIMENTO'),
 (2, 'Arroz', 'Aroz con leche', 'doctor simo', 32, 'INYECCION');
 
 -- --------------------------------------------------------
@@ -282,17 +297,18 @@ CREATE TABLE `sementales` (
   `razaPadre` varchar(100) NOT NULL,
   `razaMadre` varchar(100) NOT NULL,
   `numHermanosNacidos` int(11) NOT NULL,
-  `numHermanosDestete` int(11) NOT NULL
+  `numHermanosDestete` int(11) NOT NULL,
+  `estadoCerdo` enum('produccion','venta','muerto','enfermo','desecho') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `sementales`
 --
 
-INSERT INTO `sementales` (`idCerdo`, `fechaNacimiento`, `idRaza`, `pesoNacimiento`, `pesoDestete`, `razaPadre`, `razaMadre`, `numHermanosNacidos`, `numHermanosDestete`) VALUES
-(300001, '2017-04-12', 1200001, 3.3, 8.2, 'York', 'York', 9, 9),
-(300002, '2016-12-11', 1200002, 4, 9.3, 'York', 'York', 8, 7),
-(300003, '2018-04-25', 1200001, 12, 123, 'LANDRACE', 'LANDRACE', 12, 12);
+INSERT INTO `sementales` (`idCerdo`, `fechaNacimiento`, `idRaza`, `pesoNacimiento`, `pesoDestete`, `razaPadre`, `razaMadre`, `numHermanosNacidos`, `numHermanosDestete`, `estadoCerdo`) VALUES
+(300001, '2017-04-11', 1200001, 2.2, 8.2, 'York', 'York', 9, 9, 'produccion'),
+(300002, '2016-12-11', 1200002, 2.1, 9.3, 'York', 'York', 8, 7, 'desecho'),
+(300003, '2018-04-25', 1200001, 1.9, 9.2, 'LANDRACE', 'LANDRACE', 12, 12, 'produccion');
 
 -- --------------------------------------------------------
 
@@ -313,9 +329,11 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `usuario`, `pass`, `tipoUser`) VALUES
 (1, 'leonardo', '1234567890', 'Admin'),
-(16, 'cesar', 'cesar123', 'Admin'),
+(16, 'cesar', 'cesar123', 'Veterinario'),
 (17, '207448228', 'rafarafa', 'Admin'),
-(19, 'leonardo13', 'leonardo13', 'Admin');
+(19, 'leonardo13', 'leonardo13', 'Admin'),
+(20, 'vazquez', 'leonardo', 'Admin'),
+(21, 'Cardona', 'Leonardo', 'Veterinario');
 
 -- --------------------------------------------------------
 
@@ -484,12 +502,12 @@ ALTER TABLE `alimentos`
 -- AUTO_INCREMENT de la tabla `apareamientos`
 --
 ALTER TABLE `apareamientos`
-  MODIFY `idApareamiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idApareamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `cerdas`
 --
 ALTER TABLE `cerdas`
-  MODIFY `idCerda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200002;
+  MODIFY `idCerda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200011;
 --
 -- AUTO_INCREMENT de la tabla `corrales`
 --
@@ -534,7 +552,7 @@ ALTER TABLE `sementales`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `vacunas`
 --
@@ -545,16 +563,6 @@ ALTER TABLE `vacunas`
 --
 ALTER TABLE `ventas`
   MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `lactancias`
---
-ALTER TABLE `lactancias`
-  ADD CONSTRAINT `lactancia_partos` FOREIGN KEY (`idParto`) REFERENCES `partos` (`idParto`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -35,25 +35,18 @@
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Engorda <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="maternidad.php">Cerdas de Reproducción</a></li>
-								<li><a href="#">Promedio de vida reproductiva</a></li>
-								<li><a href="#">Primer servicio de Hembra</a></li>
-								<li><a href="#">N&uacute;mero de partos por a&ntilde;o</a></li>
-								<li><a href="#">N&uacute;mero de hembras por semental</a></li>
-								<li><a href="#">Dias de gestación</a></li>
-								<li><a href="#">Control de partos</a></li>
+								<li><a href="engorda.php#vender">Vender camadas</a></li>
+								<li><a href="engorda.php#informacion">Total de lechones en engorda</a></li>
+								<li><a href="engorda.php#graficas">Graficas</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Maternidad <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="maternidad.php">Cerdas de Reproducción</a></li>
-								<li><a href="#">Promedio de vida reproductiva</a></li>
-								<li><a href="#">Primer servicio de Hembra</a></li>
 								<li><a href="#">N&uacute;mero de partos por a&ntilde;o</a></li>
 								<li><a href="#">N&uacute;mero de hembras por semental</a></li>
 								<li><a href="#">Dias de gestación</a></li>
-								<li><a href="#">Control de partos</a></li>
 							</ul>
 						</li>
 						<li>
@@ -93,32 +86,18 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Datos Mortalidad <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="mortalidad.php">Muertes</a></li>
-								<li><a href="#">Nacidos muertos</a></li>
-								<li><a href="#">Muertes en los primeros tres dias </a></li>
-								<li><a href="#">Primeras tres semanas</a></li>
-								<li><a href="#">Muertes en desarollo y engorda</a></li>
-								<li><a href="#">Muertes de hembras en lactancia</a></li>
-								<li><a href="#">Muertes de hembras en gestaci&oacute;n</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Apareamiento <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="">Dias Abiertos</a></li>
-								<li><a href="#">Calores</a></li>
-								<li><a href="#">N&uacute;mero de hembras en reproducci&oacute;n</a></li>
-								<li><a href="#">Hembras pre&ntilde;adas por a&ntilde;o</a></li>
-								<li><a href="#">Hembras paridas por a&ntilde;o</a></li>
+								<li><a href="apareamiento.php">Apareamiento</a></li>
+								<li><a href="apareamiento.php">N&uacute;mero de hembras en reproducci&oacute;n</a></li>
+								<li><a href="apareamiento.php">Hembras pre&ntilde;adas por a&ntilde;o</a></li>
+								<li><a href="apareamiento.php">Hembras paridas por a&ntilde;o</a></li>
 							</ul>
 						</li>
-						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alimento <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="">Alimento Total</a></li>
-								<li><a href="">Alimento suministrado</a></li>
-								<li><a href="">Alimento consumido</a></li>
-							</ul>
-						</li>
+						
 					</ul>
 					
 

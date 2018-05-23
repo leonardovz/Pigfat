@@ -216,42 +216,39 @@
 		</div>
 	</div>
 	<div class="container">
-	<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<script src="js/Chart.js"></script>
-					<div id="canvas-holder">
-					<!-- <canvas id="chart-area" width="300" height="300"></canvas> -->
-					<!-- <canvas id="chart-area2" width="300" height="300"></canvas> -->
-						<canvas id="chart-area3" width="600" height="300"></canvas>
-					<!-- <canvas id="chart-area4" width="600" height="300"></canvas> -->
-					</div>
-					<script>
-						var pieData = [{value: 80,color:"#0b82e7",highlight: "#0c62ab",label: "Google Chrome"},
-										{
-											value: 16,
-											color: "#e3e860",
-											highlight: "#a9ad47",
-											label: "Android"
-										},
-										{
-											value: 11,
-											color: "#eb5d82",
-											highlight: "#b74865",
-											label: "Firefox"
-										},
-										{
-											value: 10,
-											color: "#5ae85a",
-											highlight: "#42a642",
-											label: "Internet Explorer"
-										},
-										{
-											value: 8.6,
-											color: "#e965db",
-											highlight: "#a6429b",
-											label: "Safari"
-										}
-									];
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<script src="js/Chart.js"></script>
+				<div id="canvas-holder">
+					<canvas id="chart-area3" width="600" height="300"></canvas>
+				</div>
+				<script>
+					var pieData = [{value: 80,color:"#0b82e7",highlight: "#0c62ab",label: "Google Chrome"},
+							{
+								value: 16,
+								color: "#e3e860",
+								highlight: "#a9ad47",
+								label: "Android"
+							},
+							{
+								value: 11,
+								color: "#eb5d82",
+								highlight: "#b74865",
+								label: "Firefox"
+							},
+							{
+								value: 10,
+								color: "#5ae85a",
+								highlight: "#42a642",
+								label: "Internet Explorer"
+							},
+							{
+								value: 8.6,
+								color: "#e965db",
+								highlight: "#a6429b",
+								label: "Safari"
+							}
+							];
 
 							var barChartData = {
 								labels : ["Machos Vivos","Machos Muertos","Hembras vivas","Hembras muertas"],
@@ -272,10 +269,10 @@
 						
 						window.myPie = new Chart(ctx3).Bar(barChartData, {responsive:true});
 						
-					</script>
-				</div>
+				</script>
 			</div>
 		</div>
+	</div>
 			
         
     </div>

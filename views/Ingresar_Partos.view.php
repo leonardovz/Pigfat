@@ -21,8 +21,14 @@
 									<h1>Ingresar datos de Parto</h1>
 									<form action="php/recibe.php" method="POST" class="Formulario">
 										<div class="form-group">
-											<label for="idParto">ID Parto</label>
-											<input class="form-control" type="text" id="idParto" name="idParto" placeholder="ID_Parto">
+											<label for="idApareamiento">N&uacute;mero de apareamiento</label>
+											<select name="idApareamiento" id="idApareamiento" class="form-control">
+												<?php
+													while($fila = mysql_fetch_array($queryPreniamientos)){//despliegue de columnas y filas
+														echo"<option value='$fila[0]'>$fila[0]</option>"; 
+													}
+												?>
+											</select>
 										</div>
 										<div class="form-group">
 											<label for="idRaza">Raza</label>
@@ -35,30 +41,8 @@
 												</select>
 										</div>
 										<div class="form-group">
-												<label for="idRazaMacho">Raza Macho</label>
-												<select class="form-control" name="idRazaMacho" id="idRazaMacho">
-													<option>1200001</option>
-													<option>1200002</option>
-													<option>1200003</option>
-													<option>1200004</option>
-													<option>1200005</option>
-													</select>
-											</div>
-										<div class="form-group">
 											<label for="numParto">Numero de Parto</label>
-											<input class="form-control" type="text" id="numParto" name="numParto" placeholder="Numero de Parto">
-										</div>
-										<div class="form-group">
-											<label for="fechaDesteteAnterior">Fecha Destete Anterior</label>
-											<input class="form-control" type="date" id="fechaDesteteAnterior" name="fechaDesteteAnterior" placeholder="Fecha 	Destete Anterior">
-										</div>
-										<div class="form-group">
-											<label for="fechaPrenez">Fecha de Preñes</label>
-											<input class="form-control" type="date" id="fechaPrenez" name="fechaPrenez" placeholder="Fecha de Preñes">
-										</div>
-										<div class="form-group">
-											<label for="diasAbiertos">Dias Abiertos</label>
-											<input class="form-control" type="text" id="diasAbiertos" name="diasAbiertos" placeholder="Dias Abiertos">
+											<input class="form-control" type="number" id="numParto" name="numParto" pattern="[0-9]+" placeholder="Numero de Parto">
 										</div>
 										<div class="form-group">
 											<label for="fechaParto">Fecha de Parto</label>
@@ -81,19 +65,8 @@
 											<input class="form-control" type="number" id="nacidosMuertosHembras" name="nacidosMuertosHembras" placeholder="Nacidos Muertos Hembras">
 										</div>
 										<div class="form-group">
-											<label for="totalnacidos">Total_Nacidos</label>
-											<input class="form-control" type="number" id="totalnacidos" name="totalnacidos" placeholder="Total_Nacidos">
-										</div>
-										<div class="form-group">
-											<label for="pesoPromedioCamada">Peso Promedio Camada</label>
-											<input class="form-control" type="number" id="pesoPromedioCamada" name="pesoPromedioCamada" placeholder="Peso Promedio Camada">
-										</div>
-										<div class="form-group">
-											<label for="estado">Estado</label>
-											<select class="form-control" id="estado" name="estado">
-												<option>VENTA</option>
-												<option>CACETA</option>
-												</select>
+											<label for="pesoCamada">Peso camada</label>
+											<input class="form-control" type="number" id="pesoCamada" name="pesoCamada" placeholder="Peso camada">
 										</div>
 					
 										<button class="btn btn-success btn-block btn-lg" type="submit">Enviar</button><br><br><br>
@@ -107,12 +80,16 @@
 									<h1>Registro de Cerdas</h1>
 									<form action="php/recibeCerdas.php" method="POST" class="Formulario">
 										<div class="form-group">
-											<label for="idCerda">ID Cerda</label>
-											<input class="form-control" type="text" id="idCerda" name="idCerda" placeholder="ID Cerda">
-										</div>
-										<div class="form-group">
-											<label for="fechaNacimiento">Fecha de Nacimiento</label>
-											<input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de Nacimiento">
+											<label for="idCamada">Id camada (selecciona solo si se conoce el ID de la camada a asignaci&oacute;n)</label>
+											<select name="idCamada" id="idCamada" class="form-control">
+												<option value="200000">Hembra externa</option>
+												<?php 
+													
+													while($fila = mysql_fetch_array($queryEngorda)){//despliegue de columnas y filas
+														echo"<option value='$fila[0]'>$fila[0]</option>"; 
+													}
+												?>
+											</select>
 										</div>
 										<div class="form-group">
 											<label for="idRaza">Raza</label>
@@ -124,19 +101,8 @@
 												<option>1200005</option>
 												</select>
 										</div>
-										<div class="form-group">
-											<label for="numPartos">Numero de Partos</label>
-											<input class="form-control" type="text" id="numPartos" name="numPartos" placeholder="Numero de Partos">
-										</div>
-										<div class="form-group">
-											<label for="estadoCerda">Estado</label>
-											<select class="form-control" name="estadoCerda" id="estadoCerda">
-												<option>PRODUCCION</option>
-												<option>VENTA</option>
-												</select>
-										</div>
 					
-										<button class="btn btn-success btn-block btn-lg" type="submit">Enviar</button><br><br><br>
+										<button class="btn btn-success btn-block btn-lg" type="submit">Asignar cerda a meternidad</button><br><br><br>
 									</form>
 								</div>
 							</div>
@@ -146,10 +112,6 @@
 								<div class="row">
 									<h1>Registro de Sementales</h1>
 									<form action="php/recibeSemental.php" method="POST" class="Formulario">
-										<div class="form-group">
-											<label for="idCerdo">ID Cerdo</label>
-											<input class="form-control" type="text" id="idCerdo" name="idCerdo" placeholder="ID_Cerdo">
-										</div>
 										<div class="form-group">
 											<label for="fechaNacimiento">Fecha de Nacimiento</label>
 											<input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de Nacimiento">

@@ -1,25 +1,27 @@
 <?php
 include "config.php";
 
-$id = $_POST['idParto'];
+$isApareamiento = $_POST['idApareamiento'];
 $idraza = $_POST['idRaza'];
-$idRazaMacho = $_POST['idRazaMacho'];
 $numParto = $_POST['numParto'];
-$fechaDesteteAnterior = $_POST['fechaDesteteAnterior'];
 $fechaPrenez = $_POST['fechaPrenez'];
-$diasAbiertos = $_POST['diasAbiertos'];
 $fechaParto = $_POST['fechaParto'];
 $nacidosVivosMachos = $_POST['nacidosVivosMachos'];
-$nacidosVivosMachos = $_POST['nacidosMuertosMachos'];
+$nacidosMuertosMachos = $_POST['nacidosMuertosMachos'];
 $nacidosVivosHembras = $_POST['nacidosVivosHembras'];
 $nacidosMuertosHembras = $_POST['nacidosMuertosHembras'];
-$totalnacidos = $_POST['totalnacidos'];
-$pesoPromedioCamada = $_POST['pesoPromedioCamada'];
-$estado = $_POST['estado'];
+$totalnacidos = ($nacidosMuertosHembras+$nacidosMuertosMachos+$nacidosVivosHembras+$nacidosVivosMachos);
+$pesoCamada = $_POST['pesoCamada'];
+$pesoPromedioCamada = ($pesoCamada/$totalnacidos);
 
-$insertar = "INSERT INTO partos(idParto, idRaza, idRazaMacho, numParto ,fechaDesteteAnterior, fechaPrenez, diasAbiertos, fechaParto, nacidosVivosMachos, nacidosMuertosMachos, nacidosVivosHembras, nacidosMuertosHembras, totalnacidos, pesoPromedioCamada,estado) VALUES ('$cod','$idRaza','$idRazaMacho','$numParto','$fechaDesteteAnterior','$fechaPrenez','$diasAbiertos','$fechaParto','$nacidosVivosMachos','$nacidosMuertosMachos','$nacidosVivosHembras','$nacidosMuertosHembras','$totalnacidos','$pesoPromedioCamada','$estado')";
+
+$insertar = "INSERT INTO partos(idParto, idRaza, numParto , fechaPrenez, fechaParto, nacidosVivosMachos, nacidosMuertosMachos, nacidosVivosHembras, nacidosMuertosHembras, totalnacidos, pesoPromedioCamada,estado, pesoCamada) VALUES ('','$idRaza','$numParto','$fechaPrenez','$fechaParto','$nacidosVivosMachos','$nacidosMuertosMachos','$nacidosVivosHembras','$nacidosMuertosHembras','$totalnacidos','$pesoPromedioCamada','destete','$pesoCamada')";
 
 $query = mysql_query($insertar) or die (mysql_error());
+
+$actualizar = "UPDATE apareamientos SET fechaRealNacimiento=$fechaParto,estadoApareamiento='terminado' WHERE idApareamiento='$isApareamiento'";
+
+$queryActualizar = mysql_query($actualizar) or die(mysql_erro());
 
 header('Location: ../contenido.php');
 

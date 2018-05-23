@@ -5,6 +5,32 @@
 
 if (isset($_SESSION['usuario'])) {
 
+	require 'php/config.php';
+
+    //Total de lechones machos nacidos vivos
+    $sqlSumaMachosEngorda = "SELECT SUM(nacidosVivosMachos) FROM partos WHERE estado='engorda'";
+    $querySumaMachosEngorda = mysql_query($sqlSumaMachosEngorda);
+    $totalMachosEngorda;
+    while($row=mysql_fetch_array($querySumaMachosEngorda)){
+        $totalMachosEngorda=$row[0];
+	}
+	
+	$mysqli = new mysqli("localhost", $Usuario, $Password, $DataBase);
+
+	//Determinar el numero de filas registradas en el la tabla partos
+    $sqlTotalHembras = $mysqli->query("SELECT idCerda FROM cerdas WHERE estadoCerda='produccion'");
+    $totalHembras = $sqlTotalHembras->num_rows;
+
+	//Determinar el numero de filas registradas en el la tabla partos
+    $sqlTotalPartos = $mysqli->query("SELECT totalNacidos FROM partos");
+	$totalPartos = $sqlTotalPartos->num_rows;
+	
+	//Determinar el numero de filas registradas en el la tabla partos
+    $sqlTotalSementales = $mysqli->query("SELECT idCerdo FROM sementales WHERE estadoCerdo='produccion'");
+    $totalSementales = $sqlTotalSementales->num_rows;
+
+	$numFM = $totalHembras/$totalSementales;
+	
 	$conexion = conexion($Paginacion,$Usuario,$Password);
 
 	$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1 ;
