@@ -36,7 +36,7 @@
                 <input class="form-control" type="text" name="observaciones" id="observaciones" value= "<?php echo $observaciones;?>" required placeholder="Ingresa Observaciones o anotaciones necesarias"s>
             </div>
             
-            <button class="btn btn-success btn-block btn-lg" type="submit">Guardar Venta</button><br><br><br>
+            <button class="btn btn-success btn-block btn-lg" type="submit">Guardar</button><br><br><br>
         </form>
     </div>
 </div>

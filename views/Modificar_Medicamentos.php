@@ -46,7 +46,7 @@
                 </select>
             </div>
             
-            <button class="btn btn-success btn-block btn-lg" type="submit">Guardar Venta</button><br><br><br>
+            <button class="btn btn-success btn-block btn-lg" type="submit">Guardar</button><br><br><br>
         </form>
     </div>
 </div>

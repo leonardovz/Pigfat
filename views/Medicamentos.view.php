@@ -126,7 +126,7 @@
                                                 </select>
                                             </div>
                                             
-                                            <button class="btn btn-success btn-block btn-lg" type="submit">Guardar Venta</button><br><br><br>
+                                            <button class="btn btn-success btn-block btn-lg" type="submit">Guardar</button><br><br><br>
                                         </form>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
 						</div>
 					</div>
 
-					<div class="panel panel-default">
+					<!-- <div class="panel panel-default">
 						<div class="panel-heading" id="heading3">
 							<h4 class="panel-title">
 								<a href="#colapsable3" data-toggle="collapse" data-parent="#acordeon">
@@ -152,7 +152,7 @@
 								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 							</div>
-						</div>						
+						</div>						 -->
 					</div>
 				</div>
 			</div>

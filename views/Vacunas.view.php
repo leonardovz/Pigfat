@@ -114,7 +114,7 @@
                                             <input class="form-control" type="text" name="observaciones" id="observaciones"  required placeholder="Ingresa Observaciones o anotaciones necesarias"s>
                                         </div>
                                         
-                                        <button class="btn btn-success btn-block btn-lg" type="submit">Guardar Venta</button><br><br><br>
+                                        <button class="btn btn-success btn-block btn-lg" type="submit">Guardar</button><br><br><br>
                                     </form>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading6">
+                    <!-- <div class="panel-heading" id="heading6">
                         <h4 class="panel-title">
                             <a href="#colapsable6" data-toggle="collapse" data-parent="#acordeon">
                                 Elemento #3
@@ -140,7 +140,7 @@
                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </div>
-                    </div>						
+                    </div>						 -->
                 </div>
             </div>
         </div>
