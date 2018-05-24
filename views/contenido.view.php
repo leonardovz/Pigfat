@@ -9,7 +9,7 @@
 					<div class="thumbnail">
 						<a href="Casetas.php"><img class="" src='img/add.png' alt=""></a>
 						<div class="caption">
-							<h3>Registrar Caseta</h3>
+							<h3>Registrar Caseta </h3>
 						</div>
 					</div>
 				</div>

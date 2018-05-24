@@ -3,7 +3,7 @@
 require 'admin/admin.php';
 require 'php/funciones.php';
 
-if (isset($_SESSION['usuario'])) {
+if(($_SESSION['type']=="Veterinario")||($_SESSION['type']=="Admin")) {
 
 	$conexion = conexion($Paginacion,$Usuario,$Password);
 	

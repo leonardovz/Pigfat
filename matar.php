@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario'])) {
         case 'cerdas':
             $id=$_POST['cerdas'];
             //modifica tabla cerdas a estado muerta
-            $sql="UPDATE cerdas SET estadoCerda = 'MUERTA' WHERE idCerda = $id;";
+            $sql="UPDATE cerdas SET estadoCerda = 'muerta' WHERE idCerda = $id;";
             $sentencia= $conexion->prepare($sql);
             $sentencia->execute();
             //registra el suceso
@@ -23,7 +23,7 @@ if (isset($_SESSION['usuario'])) {
         case 'cerdos':
             $id=$_POST['cerdos'];
                         //modifica tabla sementales a estado muerto
-            $sql="UPDATE sementales SET estadoCerdo = 'MUERTO' WHERE idCerdo =$id;";
+            $sql="UPDATE sementales SET estadoCerdo = 'muerto' WHERE idCerdo =$id;";
             $sentencia= $conexion->prepare($sql);
             $sentencia->execute();
             //registra el suceso

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-05-2018 a las 22:39:57
+-- Tiempo de generación: 24-05-2018 a las 00:06:45
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -80,7 +80,7 @@ CREATE TABLE `cerdas` (
   `fechaNacimiento` date NOT NULL,
   `idRaza` int(11) NOT NULL,
   `numPartos` int(11) NOT NULL,
-  `estadoCerda` enum('produccion','venta','desecho','muerta','enferma','prenez') NOT NULL,
+  `estadoCerda` enum('produccion','venta','muerto','enfermo') NOT NULL DEFAULT 'produccion',
   `idPArto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -89,10 +89,10 @@ CREATE TABLE `cerdas` (
 --
 
 INSERT INTO `cerdas` (`idCerda`, `fechaNacimiento`, `idRaza`, `numPartos`, `estadoCerda`, `idPArto`) VALUES
-(200001, '2018-05-05', 1200001, 1, 'venta', 1300001),
-(200008, '2018-05-22', 1200001, 0, 'produccion', 200000),
-(200009, '2018-05-22', 1200001, 0, 'produccion', 200000),
-(200010, '2018-04-20', 1200001, 4, 'prenez', 1300003);
+(200001, '2018-05-05', 1200001, 1, 'produccion', 1300001),
+(200008, '2018-05-22', 1200001, 0, '', 200000),
+(200009, '2018-05-22', 1200001, 0, '', 200000),
+(200010, '2018-04-20', 1200001, 4, '', 1300003);
 
 -- --------------------------------------------------------
 
@@ -306,9 +306,34 @@ CREATE TABLE `sementales` (
 --
 
 INSERT INTO `sementales` (`idCerdo`, `fechaNacimiento`, `idRaza`, `pesoNacimiento`, `pesoDestete`, `razaPadre`, `razaMadre`, `numHermanosNacidos`, `numHermanosDestete`, `estadoCerdo`) VALUES
-(300001, '2017-04-11', 1200001, 2.2, 8.2, 'York', 'York', 9, 9, 'produccion'),
-(300002, '2016-12-11', 1200002, 2.1, 9.3, 'York', 'York', 8, 7, 'desecho'),
+(300001, '2017-04-11', 1200001, 2.2, 8.2, 'York', 'York', 9, 9, 'muerto'),
+(300002, '2016-12-11', 1200002, 2.1, 9.3, 'York', 'York', 8, 7, 'muerto'),
 (300003, '2018-04-25', 1200001, 1.9, 9.2, 'LANDRACE', 'LANDRACE', 12, 12, 'produccion');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sucesos`
+--
+
+CREATE TABLE `sucesos` (
+  `idsuceso` int(11) NOT NULL,
+  `idanimal` int(11) NOT NULL,
+  `suceso` enum('vacuna','muerte','medicamento') NOT NULL,
+  `fecha` date NOT NULL,
+  `sexo` enum('macho','hembra') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sucesos`
+--
+
+INSERT INTO `sucesos` (`idsuceso`, `idanimal`, `suceso`, `fecha`, `sexo`) VALUES
+(5, 200008, 'muerte', '2018-05-23', 'hembra'),
+(11, 1300002, 'muerte', '2018-05-23', 'macho'),
+(13, 1300001, 'muerte', '2018-05-23', 'macho'),
+(14, 1300004, 'muerte', '2018-05-23', 'macho'),
+(15, 300002, 'muerte', '2018-05-23', 'macho');
 
 -- --------------------------------------------------------
 
@@ -332,7 +357,7 @@ INSERT INTO `usuarios` (`id`, `usuario`, `pass`, `tipoUser`) VALUES
 (16, 'cesar', 'cesar123', 'Veterinario'),
 (17, '207448228', 'rafarafa', 'Admin'),
 (19, 'leonardo13', 'leonardo13', 'Admin'),
-(20, 'vazquez', 'leonardo', 'Admin'),
+(20, 'vazquez', 'vazquez', 'Casetero'),
 (21, 'Cardona', 'Leonardo', 'Veterinario');
 
 -- --------------------------------------------------------
@@ -468,6 +493,14 @@ ALTER TABLE `sementales`
   ADD UNIQUE KEY `idCerdo_UNIQUE` (`idCerdo`);
 
 --
+-- Indices de la tabla `sucesos`
+--
+ALTER TABLE `sucesos`
+  ADD PRIMARY KEY (`idsuceso`),
+  ADD UNIQUE KEY `idsuceso_UNIQUE` (`idsuceso`),
+  ADD KEY `partos_sucesos_idx` (`idanimal`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -548,6 +581,11 @@ ALTER TABLE `raza`
 --
 ALTER TABLE `sementales`
   MODIFY `idCerdo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300004;
+--
+-- AUTO_INCREMENT de la tabla `sucesos`
+--
+ALTER TABLE `sucesos`
+  MODIFY `idsuceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

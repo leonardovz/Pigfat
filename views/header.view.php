@@ -35,7 +35,9 @@
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Engorda <span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<?php if($_SESSION['type']=='Admin'):?>
 								<li><a href="engorda.php#vender">Vender camadas</a></li>
+								<?php endif;?>
 								<li><a href="engorda.php#informacion">Total de lechones en engorda</a></li>
 								<li><a href="engorda.php#graficas">Graficas</a></li>
 							</ul>
@@ -44,36 +46,35 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Maternidad <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="maternidad.php">Cerdas de Reproducción</a></li>
-								<li><a href="#">N&uacute;mero de partos por a&ntilde;o</a></li>
-								<li><a href="#">N&uacute;mero de hembras por semental</a></li>
-								<li><a href="#">Dias de gestación</a></li>
+								<li><a href="maternidad.php">N&uacute;mero de partos por a&ntilde;o</a></li>
+								<li><a href="maternidad.php">Dias de gestación</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sementales <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="Sementales.php">Cerdos Sementales</a></li>
-								<li><a href="#">Promedio de vida Reproductiva</a></li>
-								<li><a href="#">Primer servicio del macho</a></li>
-								<li><a href="#">N&uacute;mero de hembras por semental</a></li>
-								<li><a href="#">Promedio de lechones producidos por semental</a></li>
+								<li><a href="Sementales.php">Promedio de vida Reproductiva</a></li>
+								<li><a href="Sementales.php">Primer servicio del macho</a></li>
+								<li><a href="Sementales.php">N&uacute;mero de hembras por semental</a></li>
+								<li><a href="Sementales.php">Promedio de lechones producidos por semental</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Destete <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="Destete.php">Numero de Hembras por Semental</a></li>
-								<li><a href="#">Promedio de lechones nacidos por parto</a></li>
-								<li><a href="#">Total de lechones MACHO nacidos</a></li>
-								<li><a href="#">Promedio de lechones MACHO nacidos por parto</a></li>
-								<li><a href="#">Total de lechones HEMBRA nacidos</a></li>
-								<li><a href="#">Promedio de lechones HEMBRA nacidos por parto</a></li>
-								<li><a href="#">Peso promedio al nacer</a></li>
-								<li><a href="#">Peso promedio de los lechones despues de 21 dias</a></li>
-								<li><a href="#">Total de  lechones destetados</a></li>
-								<li><a href="#">Peso promedio de los lechones al ser destetados</a></li>
+								<li><a href="Destete.php">Promedio de lechones nacidos por parto</a></li>
+								<li><a href="Destete.php">Total de lechones MACHO nacidos</a></li>
+								<li><a href="Destete.php">Promedio de lechones MACHO nacidos por parto</a></li>
+								<li><a href="Destete.php">Total de lechones HEMBRA nacidos</a></li>
+								<li><a href="Destete.php">Promedio de lechones HEMBRA nacidos por parto</a></li>
+								<li><a href="Destete.php">Peso promedio al nacer</a></li>
+								<li><a href="Destete.php">Peso promedio de los lechones despues de 21 dias</a></li>
+								<li><a href="Destete.php">Total de  lechones destetados</a></li>
+								<li><a href="Destete.php">Peso promedio de los lechones al ser destetados</a></li>
 							</ul>
 						</li>
+						<?php if($_SESSION['type']=='Veterinario'||$_SESSION['type']=='Admin'): ?>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicamentos y vacunas <span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -82,12 +83,14 @@
 								<li><a href="Medicamentos_y_vacunas.php?id=2">Medicamentos</a></li>
 							</ul>
 						</li>
+						
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Datos Mortalidad <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="mortalidad.php">Muertes</a></li>
 							</ul>
 						</li>
+						<?php endif?>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Apareamiento <span class="caret"></span></a>
 							<ul class="dropdown-menu">

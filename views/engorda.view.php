@@ -1,10 +1,11 @@
-<?php include ('header.view.php');?>
+<?php session_start(); include ('header.view.php');?>
 
 <!-- Inicia container principal -->
 <div class="container">
     <h1>Datos de engorda</h1>
     <div class="container">
 		<div class="row">
+        <?php if($_SESSION['type']=='Admin' ):?>
             <h1>Vender camadas</h1>
             <form action="php/venderCamadas.php" method="POST" class="Formulario" id="vender">
                 <div class="form-group">
@@ -21,7 +22,7 @@
                     <button class="btn btn-success btn-block btn-lg" type="submit">Vender</button><br><br><br>
 				</div>
             </form>
-
+            <?php endif;?>
             <!-- Inicia bloque de estadisticas -->
             <div class="panel-group" id="informacion">
                 <div class="panel panel-default">

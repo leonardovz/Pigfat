@@ -231,14 +231,14 @@
 									];
 
 							var barChartData = {
-								labels : ["Primeros 3 dias","Primeras 3 semanas","Desarrollo y engorda","Reproductoras","Reproductores"],
+								labels : ["Total","Primeros 3 dias","Primeras 3 semanas","Desarrollo y engorda","Reproductoras","Reproductores"],
 								datasets : [
 									{
 										fillColor : "#6b9dfa",
 										strokeColor : "#ffffff",
 										highlightFill: "#1864f2",
 										highlightStroke: "#ffffff",
-										data : ['<?php echo $b1?>','<?php echo $b2?>','<?php echo $b3?>','<?php echo $b4?>','<?php echo $b5?>']
+										data : ['<?php echo $b1?>','<?php echo $b2?>','<?php echo $b3?>','<?php echo $b4?>','<?php echo $b5?>','<?php echo $b6?>']
 									}
 								]
 

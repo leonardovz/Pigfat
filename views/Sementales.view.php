@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<!-- Fin de paginacion -->
-
+				<?php if($_SESSION['type']=='Admin' ):?>
 				<!-- Inicio de desecho -->
 				<div class="panel panel-default">
 					<div class="panel-heading" id="heading2">
@@ -100,36 +100,38 @@
 				<!-- Fin de desecho -->
 
 				<!-- Inicio de matar semental -->
-				<div class="panel panel-default">
-					<div class="panel-heading" id="heading3">
-						<h4 class="panel-title">
-							<a href="#colapsable3" data-toggle="collapse" data-parent="#acordeon">
-								Semental muerto
-							</a>
-						</h4>
-					</div>
-					<div id="colapsable3" class="panel-collapse collapse" arial-labelledby="heading3">
-						<div class="panel-body">
-							<form action="php/sementalmuerto.php" method="post">
-								<div class="form-group">
-									<label for="idCerdo">ID Semental</label>
-									<select name="idCerdo" id="idCerdo" class="form-control">
-									<?php 
-										$sqlDesechar="SELECT idCerdo FROM sementales WHERE estadoCerdo='produccion'";
-										$queryDesechar = mysql_query($sqlDesechar) or die (mysql_error());
-										while($fila = mysql_fetch_array($queryDesechar)){//despliegue de columnas y filas
-											echo"<option value='$fila[0]'>$fila[0]</option>"; 
-										}
-									?>
-									</select>
-								</div>
-								<div class="form-group">
-									<button class="btn btn-success btn-block btn-lg" type="submit">Matar</button><br><br><br>
-								</div>
-							</form>
+				
+					<div class="panel panel-default">
+						<div class="panel-heading" id="heading3">
+							<h4 class="panel-title">
+								<a href="#colapsable3" data-toggle="collapse" data-parent="#acordeon">
+									Semental muerto
+								</a>
+							</h4>
+						</div>
+						<div id="colapsable3" class="panel-collapse collapse" arial-labelledby="heading3">
+							<div class="panel-body">
+								<form action="php/sementalmuerto.php" method="post">
+									<div class="form-group">
+										<label for="idCerdo">ID Semental</label>
+										<select name="idCerdo" id="idCerdo" class="form-control">
+										<?php 
+											$sqlDesechar="SELECT idCerdo FROM sementales WHERE estadoCerdo='produccion'";
+											$queryDesechar = mysql_query($sqlDesechar) or die (mysql_error());
+											while($fila = mysql_fetch_array($queryDesechar)){//despliegue de columnas y filas
+												echo"<option value='$fila[0]'>$fila[0]</option>"; 
+											}
+										?>
+										</select>
+									</div>
+									<div class="form-group">
+										<button class="btn btn-success btn-block btn-lg" type="submit">Matar</button><br><br><br>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
-				</div>
+				<?php endif;?>
 				<!-- Fin de semental -->
 				
 				<!-- Inicio de expresion de informacion-->
